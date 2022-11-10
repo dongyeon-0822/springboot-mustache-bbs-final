@@ -5,9 +5,13 @@ import com.mustache.springbootmustache3.domain.entity.Article;
 import com.mustache.springbootmustache3.repository.ArticleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/articles")
@@ -29,5 +33,17 @@ public class ArticleController {
         log.info(articleDto.getTitle());
         Article savedArticle=articleRepository.save(articleDto.toEntity());
         return String.format("id : %d",savedArticle.getId()) ;
+    }
+
+    @GetMapping(value = "/{id}")
+    public String showSingle(@PathVariable Long id, Model model) {
+        Optional<Article> optArticle = articleRepository.findById(id);
+
+        if(!optArticle.isEmpty()){
+            model.addAttribute("article", optArticle.get());
+            return "articles/show";
+        } else {
+            return "articles/error";
+        }
     }
 }
