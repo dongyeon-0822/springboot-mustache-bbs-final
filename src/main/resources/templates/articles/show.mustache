@@ -1,0 +1,13 @@
+{{>layouts/header}}
+<div>
+    {{#article}}
+        <div>
+            <h5 >{{id}}</h5>
+            <h6 >{{title}}</h6>
+            <p >{{content}}</p>
+            <a href="/articles/new" >new article</a>
+            <a href="/articles" >articles List</a>
+        </div>
+    {{/article}}
+</div>
+{{>layouts/footer}}
