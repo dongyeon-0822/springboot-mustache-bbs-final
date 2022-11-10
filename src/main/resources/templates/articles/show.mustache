@@ -1,13 +1,16 @@
 {{>layouts/header}}
 <div>
     {{#article}}
-        <div>
-            <h5 >{{id}}</h5>
-            <h6 >{{title}}</h6>
-            <p >{{content}}</p>
+        <div class="container">
+            <h5 >No : {{id}}</h5>
+            <h6 >title : {{title}}</h6>
+            <p >content : {{content}}</p>
             <a href="/articles/new" >new article</a>
             <a href="/articles" >articles List</a>
         </div>
     {{/article}}
 </div>
+<a class="btn btn-primary" href="/articles/{{article.id}}/edit">Edit</a>
+<a class="btn btn-danger" href="/articles/{{article.id}}/delete">Delete</a>
+
 {{>layouts/footer}}
