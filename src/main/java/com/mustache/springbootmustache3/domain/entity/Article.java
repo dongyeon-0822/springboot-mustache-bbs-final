@@ -1,5 +1,6 @@
 package com.mustache.springbootmustache3.domain.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 
 @Entity
 @Getter
+@AllArgsConstructor
 @NoArgsConstructor
 public class Article {
     @Id
