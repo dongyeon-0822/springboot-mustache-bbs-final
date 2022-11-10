@@ -5,9 +5,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class SpringbootMustache3ApplicationTests {
-
-    @Test
-    void contextLoads() {
-    }
+    // contextLoads() 제거
 
 }
