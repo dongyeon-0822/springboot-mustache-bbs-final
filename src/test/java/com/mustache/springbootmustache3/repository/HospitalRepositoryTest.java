@@ -1,6 +1,7 @@
 package com.mustache.springbootmustache3.repository;
 
 import com.mustache.springbootmustache3.domain.entity.Hospital;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,6 +16,7 @@ class HospitalRepositoryTest {
     HospitalRepository hospitalRepository;
 
     @Test
+    @DisplayName("DB에서 값을 잘 가져오는지 확인")
     void findById() {
         Optional<Hospital> hospital = hospitalRepository.findById(1);
         Hospital hp = hospital.get();

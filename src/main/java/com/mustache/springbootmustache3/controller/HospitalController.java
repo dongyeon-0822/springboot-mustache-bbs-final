@@ -24,7 +24,7 @@ public class HospitalController {
 
 
     @GetMapping("")
-    public String list(Model model, Pageable pageable) {
+    public String hospitalList(Model model, Pageable pageable) {
         Page<Hospital> hospitals = hospitalRepository.findAll(pageable);
         log.info("size:{}", hospitals.getSize());
         model.addAttribute("hospitals", hospitals);
