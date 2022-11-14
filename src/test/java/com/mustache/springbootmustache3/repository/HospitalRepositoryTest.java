@@ -18,6 +18,15 @@ class HospitalRepositoryTest {
     HospitalRepository hospitalRepository;
 
     @Test
+    @DisplayName("DB에서 값을 잘 가져오는지 확인")
+    void findById() {
+        Optional<Hospital> hospital = hospitalRepository.findById(1);
+        Hospital hp = hospital.get();
+        System.out.println(hp.getId());
+        assertEquals(1, hp.getId());
+    }
+
+    @Test
     @DisplayName("BusinessTypeName을 잘 가져오는지")
     void findByBusinessTypeNameIn() {
         List<String> inClues = new ArrayList<>();
@@ -32,13 +41,26 @@ class HospitalRepositoryTest {
     }
 
 
+    @Test
+    @DisplayName("roadNameAddress가 '송파구'를 포함하는지")
+    void containing() {
+        List<Hospital> hospitals = hospitalRepository.findByRoadNameAddressContaining("송파구");
+        printHospitalNameAndAddress(hospitals);
+    }
 
     @Test
-    @DisplayName("DB에서 값을 잘 가져오는지 확인")
-    void findById() {
-        Optional<Hospital> hospital = hospitalRepository.findById(1);
-        Hospital hp = hospital.get();
-        System.out.println(hp.getId());
-        assertEquals(1, hp.getId());
+    @DisplayName("hospitalName이 '경희'로 시작하는지")
+    void startsWith() {
+        List<Hospital> hospitals = hospitalRepository.findByHospitalNameStartsWith("경희"); // 가톨릭 서울 연세 경희
+        printHospitalNameAndAddress(hospitals);
+    }
+
+    // 출력하는 코드 분리
+    void printHospitalNameAndAddress(List<Hospital> hospitals) {
+        for (var hospital : hospitals) {
+            System.out.printf("%s | %s %f\n", hospital.getHospitalName(), hospital.getRoadNameAddress(), hospital.getTotalAreaSize());
+        }
+
+        System.out.println(hospitals.size());
     }
 }
