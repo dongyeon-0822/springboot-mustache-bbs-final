@@ -28,4 +28,6 @@ public class Hospital {
 
     private Integer patientRoomCount;
     private Integer totalNumberOfBeds;
+    private String businessTypeName;
+    private Float totalAreaSize;
 }
