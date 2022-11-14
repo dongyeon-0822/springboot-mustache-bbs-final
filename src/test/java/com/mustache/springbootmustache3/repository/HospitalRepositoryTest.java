@@ -54,6 +54,24 @@ class HospitalRepositoryTest {
         List<Hospital> hospitals = hospitalRepository.findByHospitalNameStartsWith("경희"); // 가톨릭 서울 연세 경희
         printHospitalNameAndAddress(hospitals);
     }
+    @Test
+    @DisplayName("hospitalName이 '병원'으로 끝나는지")
+    void endsWith() {
+        List<Hospital> hospitals = hospitalRepository.findByHospitalNameEndsWith("병원");// 의원, 병원, 이비인후과, 치과
+        printHospitalNameAndAddress(hospitals);
+    }
+
+    @Test
+    void findByPatientRoomCountAndPatientRoomCount() {
+        List<Hospital> hospitals = hospitalRepository.findByPatientRoomCountGreaterThanAndPatientRoomCountLessThan(10, 20);// 의원, 병원, 이비인후과, 치과
+        printHospitalNameAndAddress(hospitals);
+    }
+
+    @Test
+    void findByPatientRoomCountBetween() {
+        List<Hospital> hospitals = hospitalRepository.findByPatientRoomCountBetween(10, 20);// 의원, 병원, 이비인후과, 치과
+        printHospitalNameAndAddress(hospitals);
+    }
 
     // 출력하는 코드 분리
     void printHospitalNameAndAddress(List<Hospital> hospitals) {
