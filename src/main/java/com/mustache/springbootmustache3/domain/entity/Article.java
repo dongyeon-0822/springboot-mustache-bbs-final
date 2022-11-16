@@ -3,6 +3,7 @@ package com.mustache.springbootmustache3.domain.entity;
 import com.mustache.springbootmustache3.domain.dto.ArticleDto;
 import com.mustache.springbootmustache3.domain.dto.HospitalResponse;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Builder
 @Entity
 @Getter
 @AllArgsConstructor
