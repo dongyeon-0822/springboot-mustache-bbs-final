@@ -1,5 +1,7 @@
 package com.mustache.springbootmustache3.domain.entity;
 
+import com.mustache.springbootmustache3.domain.dto.ArticleDto;
+import com.mustache.springbootmustache3.domain.dto.HospitalResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,5 +26,11 @@ public class Article {
     public Article(String title, String content) {
         this.title = title;
         this.content = content;
+    }
+
+    // ArticleEntity를 Article Dto로 만들어주는 부분
+    public static ArticleDto of(Article article) {
+        return new ArticleDto(article.getId(),
+                article.getTitle(), article.getContent());
     }
 }
