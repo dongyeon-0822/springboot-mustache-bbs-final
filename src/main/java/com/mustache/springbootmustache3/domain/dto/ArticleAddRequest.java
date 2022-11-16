@@ -11,10 +11,10 @@ public class ArticleAddRequest {
     private String title;
     private String content;
 
-    public Article toEntity(ArticleAddRequest dto) {
+    public Article toEntity() {
         Article article = Article.builder()
-                .title(dto.getTitle())
-                .content(dto.getContent())
+                .title(this.getTitle())
+                .content(this.getContent())
                 .build();
         return article;
     }
