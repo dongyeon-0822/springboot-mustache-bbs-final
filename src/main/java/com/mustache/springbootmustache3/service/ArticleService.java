@@ -1,5 +1,7 @@
 package com.mustache.springbootmustache3.service;
 
+import com.mustache.springbootmustache3.domain.dto.ArticleAddRequest;
+import com.mustache.springbootmustache3.domain.dto.ArticleAddResponse;
 import com.mustache.springbootmustache3.domain.dto.ArticleDto;
 import com.mustache.springbootmustache3.domain.dto.HospitalResponse;
 import com.mustache.springbootmustache3.domain.entity.Article;
@@ -22,5 +24,11 @@ public class ArticleService {
         Article article = optionalArticle.get();
         ArticleDto articleDto = Article.of(article);
         return articleDto;
+    }
+
+    public ArticleAddResponse addArticle(ArticleAddRequest dto) {
+        Article article = dto.toEntity();
+        Article savedArticle = articleRepository.save(article);
+        return new ArticleAddResponse(savedArticle.getId(), savedArticle.getTitle(), savedArticle.getContent());
     }
 }
