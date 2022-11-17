@@ -4,10 +4,7 @@ import com.mustache.springbootmustache3.domain.dto.UserRequest;
 import com.mustache.springbootmustache3.domain.dto.UserResponse;
 import com.mustache.springbootmustache3.service.UserService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -23,4 +20,9 @@ public class UserRestController {
         return ResponseEntity.ok().body(userService.getUserId(id));
     }
 
+    @PostMapping
+    public ResponseEntity<UserResponse> addUser(@RequestBody UserRequest dto) {
+        UserResponse response = userService.addUser(dto);
+        return ResponseEntity.ok().body(response);
+    }
 }
