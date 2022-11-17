@@ -16,7 +16,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public UserResponse getUserId(Long id) {
+    public UserResponse getUser(Long id) {
         Optional<User> optionalUser = userRepository.findById(id);
         if (optionalUser.isEmpty()) {
             return new UserResponse(id, "", "해당 id의 유저가 없습니다");
