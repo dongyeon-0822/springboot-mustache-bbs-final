@@ -1,15 +1,13 @@
 package com.mustache.springbootmustache3.domain.dto;
 
 import com.mustache.springbootmustache3.domain.entity.User;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Builder
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 public class UserRequest {
     // 요청에서는 id를 전달할 필요가 없다.
     private String username;
