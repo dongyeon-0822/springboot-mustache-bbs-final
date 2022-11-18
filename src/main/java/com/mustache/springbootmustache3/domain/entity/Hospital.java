@@ -1,10 +1,7 @@
 package com.mustache.springbootmustache3.domain.entity;
 
 import com.mustache.springbootmustache3.domain.dto.HospitalResponse;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +14,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Hospital {
     @Id
     private Integer id;
