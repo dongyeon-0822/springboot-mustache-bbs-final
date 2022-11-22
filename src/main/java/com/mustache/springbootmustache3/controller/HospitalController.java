@@ -37,6 +37,7 @@ public class HospitalController {
         model.addAttribute("hospitals", hospitals);
         model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
         model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("keyword", keyword);
         return "hospitals/list";
     }
 }

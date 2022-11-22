@@ -2,7 +2,12 @@
 <form class="container" action="/hospitals" method="get">
     <div class="mb-3">
         <label class="form-label">도로명 주소 검색</label>
-        <input type="text" class="form-control" name="keyword" placeholder="도로명 주소를 검색하세요. ">
+        {{#keyword}}
+            <input type="text" class="form-control" name="keyword" value="{{keyword}}"/>
+        {{/keyword}}
+        {{^keyword}}
+            <input type="text" class="form-control" name="keyword" placeholder="도로명 주소를 검색하세요. ">
+        {{/keyword}}
     </div>
     <button type="submit" class="btn btn-primary">Search</button>
 </form>
@@ -25,7 +30,14 @@
     </tbody>
 </table>
 <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
-    <a href="?page={{previous}}" type="button" class="btn btn-outline-dark">Previous</a>
-    <a href="?page={{next}}" type="button" class="btn btn-outline-dark">Next</a>
+    {{#keyword}}
+        <a href="?keyword={{keyword}}&?page={{previous}}" type="button" class="btn btn-outline-dark">Previous</a>
+        <a href="?keyword={{keyword}}&?page={{next}}" type="button" class="btn btn-outline-dark">Next</a>
+    {{/keyword}}
+    {{^keyword}}
+        <a href="?page={{previous}}" type="button" class="btn btn-outline-dark">Previous</a>
+        <a href="?page={{next}}" type="button" class="btn btn-outline-dark">Next</a>
+    {{/keyword}}
 </div>
+
 {{>layouts/footer}}
